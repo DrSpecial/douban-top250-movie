@@ -16,3 +16,11 @@ Sort by year descendingly:<br/>
 Select movies from U.S.:<br/>
 `df[df['country'].str.contains('美国')]`
 ![US Movies](us_movies.jpg)
+
+Select Sci-fi type movies:<br/>
+`df[df['type'].str.contains('科幻')]`
+![Sci-fi Movies](sci-fi_movies.jpg)
+
+
+Those 250 movies will be saved to a txt file under current working directory, with each movie's information on a line. You can later load it in python.
+![Saved txt file](saved_txt.jpg)
