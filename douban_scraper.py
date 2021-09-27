@@ -48,8 +48,7 @@ for i in range(10):
         movie_info['type'] = info_text[2]
         top_250.append(movie_info)
 
-# TODO: specify you own location
-f = open('/Users/xkm/Desktop/豆瓣TOP250.txt', 'w', encoding='utf-8')
+f = open('douban_top250.txt', 'w', encoding='utf-8')
 
 for movie in top_250:
     values = movie.values()
