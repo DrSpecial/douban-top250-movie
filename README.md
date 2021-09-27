@@ -8,3 +8,11 @@ Use BeautifulSoup to parse HTML and extract info from its attribute, organize th
 Then, by using DataFrame in pandas, it is easy to sort on any features.
 
 ![DataFrame of those movies](movies.jpg)
+
+Sort by year descendingly:<br/>
+`df.sort_values(by=['year'], ascending=False)`
+![Year descending](year_descending.jpg)
+
+Select movies from U.S.:<br/>
+`df[df['country'].str.contains('美国')]`
+![US Movies](us_movies.jpg)
