@@ -40,12 +40,16 @@ for i in range(10):
         info = movie.find('p', attrs={'class': ''})
         info_text = info.get_text()
         match = re.search(pattern, info_text)
+        director_actor = info_text[:match.start()].replace(u'\xa0', u' ').strip()
+        director_actor = director_actor.split('   ')
         info_text = info_text[match.start():].replace(u'\xa0', u' ').strip()
         info_text = info_text.split(' / ')
 
         movie_info['year'] = info_text[0]
         movie_info['country'] = info_text[1]
         movie_info['type'] = info_text[2]
+        movie_info['director'] = director_actor[0][4:]
+        movie_info['actor'] = director_actor[1][4:] if len(director_actor) > 1 else ''
         top_250.append(movie_info)
 
 f = open('douban_top250.txt', 'w', encoding='utf-8')
