@@ -52,11 +52,20 @@ for i in range(10):
         movie_info['actor'] = director_actor[1][4:] if len(director_actor) > 1 else ''
         top_250.append(movie_info)
 
-f = open('douban_top250.txt', 'w', encoding='utf-8')
+# transform to pandas dataframe for easy sorting
+df = pd.DataFrame(top_250)
 
-for movie in top_250:
-    values = movie.values()
-    line = '\t'.join(values) + '\n'
-    f.write(line)
+"""
+some customized sorting examples
+"""
+# df.sort_values(by=['year'], ascending=False)
+# df[df['country'].str.contains('美国')]
+# df[df['type'].str.contains('科幻')]
+# df[df['director'].str.contains('Christopher Nolan')]
 
-f.close()
+# save data to a csv file for later use
+df.to_csv('douban_top250.csv', index=False)
+
+# or you can save to other formats such as pickle file or excel worksheet directly
+# df.to_pickle('douban_top250.pkl')
+# df.to_excel('douban_top250.xlsx')
