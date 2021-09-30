@@ -18,20 +18,28 @@ After inspecting the HTML further, we see the title of movie is stored in **\<sp
 Another thing to notice is that since those 250 movies are distributed on 10 different pages instead of a single page, it's necessary to go through all those pages. By inspecting the link address of each page, we can see a pattern that the number after "start=" is a multiple of 25 on each page. Therefore, simply changing that number in the link address will get us to the next page.
 ![link_address](images/link_address.jpg)
 
+## Results
+At last, we can organize our data into pandas's DataFrame, and do all kinds of sorting we want, which looks like:
 ![DataFrame of those movies](images/movies.jpg)
 
-Sort by year descendingly:<br/>
+### Customized sorting
+* Sort by year descendingly:<br/>
 `df.sort_values(by=['year'], ascending=False)`
 ![Year descending](images/year_descending.jpg)
 
-Select movies from U.S.:<br/>
+* Select movies from U.S.:<br/>
 `df[df['country'].str.contains('美国')]`
 ![US Movies](images/us_movies.jpg)
 
-Select Sci-fi type movies:<br/>
+* Select Sci-fi type movies:<br/>
 `df[df['type'].str.contains('科幻')]`
 ![Sci-fi Movies](images/sci-fi_movies.jpg)
 
+* Select Christopher Nolan's movies:<br/>
+`df[df['director'].str.contains('Christopher Nolan')]`
+![Nolan Movies](images/christopher_nolan.jpg)
 
-Those 250 movies will be saved to a txt file under current working directory, with each movie's information on a line. You can later load it in python.
-![Saved txt file](images/saved_txt.jpg)
+Combined sorting can also be achieved by using 'and' on previous examples.
+
+In addition, those 250 movies will be saved to a csv file under current working directory, with each movie's information on a line. You can later load it in python.
+![Saved csv file](images/saved_csv.jpg)
